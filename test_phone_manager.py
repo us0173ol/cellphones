@@ -45,22 +45,22 @@ class TestPhoneManager(unittest.TestCase):
         testAssignmentMgr.add_employee(test_employee2)
         testAssignmentMgr.add_employee(test_employee3)
 
-        self.assertEqual(testEmployees, testAssignmentMgr.employees)
+        self.assertCountEqual(testEmployees, testAssignmentMgr.employees)
 
 
 
     def test_create_and_add_employee_with_duplicate_id(self):
 
         test_employee1 = (1, 'Mike')
-        test_employee2 = (1, 'Amanda')
-        test_employee3 = (3, 'Jake')
+        test_employee2 = (2, 'Amanda')
+        test_employee3 = (1, 'Jake')
 
         testAssignmentMgr = PhoneAssignments()
 
         testAssignmentMgr.add_employee(test_employee1)
 
         with self.assertRaises(PhoneError):
-            testAssignmentMgr.add_employee(test_employee2)
+            testAssignmentMgr.add_employee(test_employee3)
 
         # TODO write this test and then remove the self.fail() statement
         # TODO you'll need to fix the add_employee method in PhoneAssignments to make this test PhoneAssignments
